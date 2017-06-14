@@ -78,7 +78,21 @@ app.post('/links',
 // Write your authentication routes here
 /************************************************************/
 
+const User = require('./models/user');
 
+app.post('/signup', function(request, response) {
+  User.POST(request.body, function(err, data) {
+    res.writeHead(201, { location: '/' });
+    res.send();
+  });
+});
+
+app.post('/login', function(request, response) {
+  User.GET(req.body, function (err, data, length) {
+    res.writeHead(201, { location: '/' });
+    res.send();
+  });
+});
 
 /************************************************************/
 // Handle the code parameter route last - if all other routes fail
